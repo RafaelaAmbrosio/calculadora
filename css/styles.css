@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+
+  min-height: 100vh;
+  background-color: hsl(217, 54%, 11%);
+}
+
+.calculadora {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+
+  height: 550px;
+  width: 370px;
+
+  border-radius: 20px;
+  background-color: hsl(214, 68%, 19%);
+}
+
+.visor {
+  height: 70px;
+  width: 310px;
+  border-radius: 6px;
+  background-color: white;
+
+  padding-top: 12px;
+  padding-right: 5px;
+
+  font-size: 40px;
+  font-family: sans-serif;
+  font-weight: 600;
+  text-align: end;
+  background-color: white;
+}
+
+.botoes button {
+  height: 75px;
+  width: 75px;
+
+  margin-top: 3px;
+
+  border-radius: 6px;
+
+  font-size: 30px;
+  font-family: sans-serif;
+  font-weight: 600;
+  background-color: white;
+  cursor: pointer;
+}
