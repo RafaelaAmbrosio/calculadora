@@ -21,6 +21,8 @@ const botaoMultiplicar = document.querySelector('.button-multiplicar');
 const botaoPorcentagem = document.querySelector('.button-porcentagem');
 const botaoMenos = document.querySelector('.button-menos');
 const botaoMais = document.querySelector('.button-mais');
+
+//INVERTE
 const botaoInverte = document.querySelector('.button-inverte');
 
 //LIMPA
@@ -45,18 +47,17 @@ function procuraUnicos() {
 
 function inserirElemnetoNoVisor(elemento) {
   if (visor.textContent.length < 14) {
-    
-    if ((visor.textContent.length === 0 && unicos.includes(elemento)) || (unicos.includes(elemento) && visor.textContent.includes(elemento))) {
+    if (unicos.includes(elemento) && visor.textContent.includes(elemento)) {
       return;
     } else if (elemento === '.') {
       //ifs do '.'
-      if (visor.textContent.length === 0) {
-        visor.textContent += '0.';
-      } else if (visor.textContent.includes('.') && procuraUnicos()) {
+      if (visor.textContent.includes('.') && procuraUnicos()) {
         visor.textContent += elemento;
       } else if (!visor.textContent.includes('.')) {
         visor.textContent += elemento;
       }
+    } else if (visor.textContent.length === 1 && visor.textContent === '0') {
+      visor.textContent = elemento;
     } else {
       visor.textContent += elemento;
     }
@@ -64,11 +65,15 @@ function inserirElemnetoNoVisor(elemento) {
 }
 
 function limpaTudo() {
-  visor.textContent = '';
+  visor.textContent = '0';
 }
 
 function limpaUm() {
-  visor.textContent = visor.textContent.slice(0, [visor.textContent.length - 1]);
+  if (visor.textContent.length === 1) {
+    visor.textContent = '0';
+  } else {
+    visor.textContent = visor.textContent.slice(0, [visor.textContent.length - 1]);
+  }
 }
 
 //EVENTOS
