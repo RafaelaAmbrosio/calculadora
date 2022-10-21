@@ -1,5 +1,7 @@
 # Calculadora
 
+### Status: Em Andamento
+
 <div>
   <a href="https://rafaelaambrosio.github.io/calculadora/">Visitar Site</a>
 </div>
