@@ -33,7 +33,7 @@ const botaoC = document.querySelector('.button-c');
 const botaoResultado = document.querySelector('.button-resultado');
 
 //OUTROS
-const unicos = ['+', '-', '*', '/'];
+const unicos = ['+', '-', 'x', '÷'];
 
 //FUNÇÕES
 function procuraUnicos() {
@@ -45,9 +45,31 @@ function procuraUnicos() {
   return false;
 }
 
+function identificarOperacao(elemento) {
+  if (elemento === '+') {
+    soma();
+  } else if (elemento === '-') {
+    subtrair();
+  } else if (elemento === 'x') {
+    mutiplicacao();
+  } else if (elemento === '÷') {
+    divisao();
+  }
+}
+
+function acharOperador() {
+  for (let elemento of visor.textContent) {
+    if (unicos.includes(elemento)) {
+      identificarOperacao(elemento);
+    }
+  }
+}
+
 function inserirElemnetoNoVisor(elemento) {
   if (visor.textContent.length < 14) {
-    if (unicos.includes(elemento) && visor.textContent.includes(elemento)) {
+    if (unicos.includes(elemento) && procuraUnicos() && !unicos.includes(visor.textContent.slice(-1))) {
+      acharOperador();
+    } else if (unicos.includes(elemento) && unicos.includes(visor.textContent.slice(-1))) {
       return;
     } else if (elemento === '.') {
       //ifs do '.'
@@ -56,7 +78,7 @@ function inserirElemnetoNoVisor(elemento) {
       } else if (!visor.textContent.includes('.')) {
         visor.textContent += elemento;
       }
-    } else if (visor.textContent.length === 1 && visor.textContent === '0') {
+    } else if (visor.textContent.length === 1 && visor.textContent === '0' && !unicos.includes(elemento)) {
       visor.textContent = elemento;
     } else {
       visor.textContent += elemento;
@@ -76,6 +98,55 @@ function limpaUm() {
   }
 }
 
+function soma() {
+  let index = visor.textContent.split('+');
+  let a = parseFloat(index[0]),
+    b = parseFloat(index[1]);
+
+  let resultado = a + b;
+
+  tamanhoResultado(resultado);
+}
+
+function subtrair() {
+  let index = visor.textContent.split('-');
+  let a = parseFloat(index[0]),
+    b = parseFloat(index[1]);
+
+  let resultado = a - b;
+
+  tamanhoResultado(resultado);
+}
+
+function mutiplicacao() {
+  let index = visor.textContent.split('x');
+  let a = parseFloat(index[0]),
+    b = parseFloat(index[1]);
+
+  let resultado = a * b;
+
+  tamanhoResultado(resultado);
+}
+
+function divisao() {
+  let index = visor.textContent.split('÷');
+  let a = parseFloat(index[0]),
+    b = parseFloat(index[1]);
+
+  let resultado = a / b;
+
+  tamanhoResultado(resultado);
+}
+
+function tamanhoResultado(resultado) {
+  let strResultado = `${resultado}`;
+  if (strResultado.length > 14) {
+    visor.textContent = strResultado.slice(0, 14);
+  } else {
+    visor.textContent = strResultado;
+  }
+}
+
 //EVENTOS
 botaoZero.onclick = () => inserirElemnetoNoVisor(botaoZero.textContent);
 botaoUm.onclick = () => inserirElemnetoNoVisor(botaoUm.textContent);
@@ -92,3 +163,8 @@ botaoPonto.onclick = () => inserirElemnetoNoVisor(botaoPonto.textContent);
 
 botaoLimpaUm.onclick = limpaUm;
 botaoC.onclick = limpaTudo;
+
+botaoMenos.onclick = () => inserirElemnetoNoVisor(botaoMenos.textContent);
+botaoMais.onclick = () => inserirElemnetoNoVisor(botaoMais.textContent);
+botaoMultiplicar.onclick = () => inserirElemnetoNoVisor(botaoMultiplicar.textContent);
+botaoDividir.onclick = () => inserirElemnetoNoVisor(botaoDividir.textContent);
