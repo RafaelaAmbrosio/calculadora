@@ -57,10 +57,16 @@ function identificarOperacao(elemento) {
   }
 }
 
+function resultado() {
+  if (!unicos.includes(visor.textContent[visor.textContent.length - 1])) {
+    identificarOperacao(acharOperador());
+  }
+}
+
 function acharOperador() {
   for (let elemento of visor.textContent) {
     if (unicos.includes(elemento)) {
-      identificarOperacao(elemento);
+      return elemento;
     }
   }
 }
@@ -68,14 +74,19 @@ function acharOperador() {
 function inserirElemnetoNoVisor(elemento) {
   if (visor.textContent.length < 14) {
     if (unicos.includes(elemento) && procuraUnicos() && !unicos.includes(visor.textContent.slice(-1))) {
-      acharOperador();
+      identificarOperacao(acharOperador());
+      visor.textContent += elemento;
     } else if (unicos.includes(elemento) && unicos.includes(visor.textContent.slice(-1))) {
       return;
     } else if (elemento === '.') {
       //ifs do '.'
-      if (visor.textContent.includes('.') && procuraUnicos()) {
+      if (
+        procuraUnicos() &&
+        !visor.textContent.slice(visor.textContent.indexOf(acharOperador()) + 1).includes('.') &&
+        !unicos.includes(visor.textContent.slice(-1))
+      ) {
         visor.textContent += elemento;
-      } else if (!visor.textContent.includes('.')) {
+      } else if (!visor.textContent.includes('.') && !procuraUnicos()) {
         visor.textContent += elemento;
       }
     } else if (visor.textContent.length === 1 && visor.textContent === '0' && !unicos.includes(elemento)) {
@@ -168,3 +179,5 @@ botaoMenos.onclick = () => inserirElemnetoNoVisor(botaoMenos.textContent);
 botaoMais.onclick = () => inserirElemnetoNoVisor(botaoMais.textContent);
 botaoMultiplicar.onclick = () => inserirElemnetoNoVisor(botaoMultiplicar.textContent);
 botaoDividir.onclick = () => inserirElemnetoNoVisor(botaoDividir.textContent);
+
+botaoResultado.onclick = resultado;
