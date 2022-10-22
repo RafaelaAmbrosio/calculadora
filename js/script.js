@@ -64,7 +64,7 @@ function resultado() {
 }
 
 function acharOperador() {
-  for (let elemento of visor.textContent) {
+  for (let elemento of visor.textContent.slice(1)) {
     if (unicos.includes(elemento)) {
       return elemento;
     }
@@ -124,9 +124,18 @@ function subtrair() {
   let a = parseFloat(index[0]),
     b = parseFloat(index[1]);
 
-  let resultado = a - b;
+  if (index[0] === '') {
+    a = parseFloat(index[1]);
+    b = parseFloat(index[2]);
+    let resultado = (a + b) * -1;
+    tamanhoResultado(resultado);
+    return;
+  } else {
+    let resultado = a - b;
 
-  tamanhoResultado(resultado);
+    tamanhoResultado(resultado);
+    return;
+  }
 }
 
 function mutiplicacao() {
