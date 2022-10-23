@@ -26,6 +26,7 @@ body {
   width: 370px;
 
   border-radius: 20px;
+  border: 1px solid #000000ce;
   background-color: hsl(214, 18%, 45%);
   box-shadow: 5px 4px #00000062;
 }
@@ -44,7 +45,7 @@ body {
   font-weight: 600;
   text-align: end;
 
-  border: 3px solid black;
+  border: 3px solid #000000d0;
   background: linear-gradient(#fffffff6, #ffffffe5 50%);
 }
 
@@ -84,7 +85,8 @@ footer {
 
   padding-bottom: 5px;
 
-  font-family: serif;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
   color: white;
 }
 
