@@ -35,7 +35,21 @@ const botaoResultado = document.querySelector('.button-resultado');
 //OUTROS
 const unicos = ['+', '-', 'x', '÷'];
 
-//FUNÇÕES
+/////FUNÇÕES/////
+
+//--Funções de Limpeza
+function limpaTudo() {
+  visor.textContent = '0';
+}
+
+function limpaUm() {
+  if (visor.textContent.length === 1) {
+    visor.textContent = '0';
+  } else {
+    visor.textContent = visor.textContent.slice(0, [visor.textContent.length - 1]);
+  }
+}
+// --Funções Auxiliares
 function procuraUnicos() {
   for (let elemento of visor.textContent.slice(1)) {
     if (unicos.includes(elemento)) {
@@ -57,12 +71,6 @@ function identificarOperacao(elemento) {
   }
 }
 
-function resultado() {
-  if (!unicos.includes(visor.textContent[visor.textContent.length - 1])) {
-    identificarOperacao(acharOperador());
-  }
-}
-
 function acharOperador() {
   for (let elemento of visor.textContent.slice(1)) {
     if (unicos.includes(elemento)) {
@@ -71,6 +79,16 @@ function acharOperador() {
   }
 }
 
+function tamanhoResultado(resultado) {
+  let strResultado = `${resultado}`;
+  if (strResultado.length > 14) {
+    visor.textContent = strResultado.slice(0, 14);
+  } else {
+    visor.textContent = strResultado;
+  }
+}
+
+// --Função do Visor
 function inserirElemnetoNoVisor(elemento) {
   if (visor.textContent.length < 14) {
     if (unicos.includes(elemento) && procuraUnicos() && !unicos.includes(visor.textContent.slice(-1))) {
@@ -97,18 +115,7 @@ function inserirElemnetoNoVisor(elemento) {
   }
 }
 
-function limpaTudo() {
-  visor.textContent = '0';
-}
-
-function limpaUm() {
-  if (visor.textContent.length === 1) {
-    visor.textContent = '0';
-  } else {
-    visor.textContent = visor.textContent.slice(0, [visor.textContent.length - 1]);
-  }
-}
-
+// --Funções Matemática
 function soma() {
   let separado = visor.textContent.split('+');
   let a = parseFloat(separado[0]),
@@ -120,22 +127,12 @@ function soma() {
 }
 
 function subtrair() {
-  let separado = visor.textContent.split('-');
-  let a = parseFloat(separado[0]),
-    b = parseFloat(separado[1]);
+  let a = parseFloat(visor.textContent.slice(0, visor.textContent.slice(1).indexOf('-') + 2)),
+    b = parseFloat(visor.textContent.slice(visor.textContent.slice(1).indexOf('-') + 2));
 
-  if (separado[0] === '') {
-    a = parseFloat(separado[1]);
-    b = parseFloat(separado[2]);
-    let resultado = (a + b) * -1;
-    tamanhoResultado(resultado);
-    return;
-  } else {
-    let resultado = a - b;
+  let resultado = a - b;
 
-    tamanhoResultado(resultado);
-    return;
-  }
+  tamanhoResultado(resultado);
 }
 
 function mutiplicacao() {
@@ -161,16 +158,16 @@ function divisao() {
 function porcentagem() {
   if (!procuraUnicos()) {
     visor.textContent = '0';
-  } else {
+  } else if (!unicos.includes(visor.textContent.slice(-1))) {
     let operador = acharOperador();
     let separado = visor.textContent.split(operador);
     let a = separado[0],
       b = parseFloat(separado[1]);
 
     if (operador === '-' || operador === '+') {
-      if (separado[0] === '') {
-        a = parseFloat(separado[1]);
-        b = parseFloat(separado[2]);
+      if (operador === '-') {
+        b = parseFloat(visor.textContent.slice(visor.textContent.slice(1).indexOf('-') + 2));
+        a = parseFloat(visor.textContent.slice(0, visor.textContent.slice(1).indexOf('-') + 2));
         b = (a * b) / 100;
         visor.textContent = `${a}${operador}${b}`;
         return;
@@ -185,15 +182,6 @@ function porcentagem() {
   }
 }
 
-function tamanhoResultado(resultado) {
-  let strResultado = `${resultado}`;
-  if (strResultado.length > 14) {
-    visor.textContent = strResultado.slice(0, 14);
-  } else {
-    visor.textContent = strResultado;
-  }
-}
-
 function inverter() {
   if (!procuraUnicos()) {
     let tranforma = parseFloat(visor.textContent);
@@ -202,7 +190,7 @@ function inverter() {
     } else {
       visor.textContent = `${(tranforma *= -1)}`;
     }
-  } else {
+  } else if (!unicos.includes(visor.textContent.slice(-1))) {
     let operador = acharOperador();
     let separado = visor.textContent.split(operador);
     let a = separado[0],
@@ -210,18 +198,12 @@ function inverter() {
 
     if (operador === '-') {
       b = visor.textContent.slice(visor.textContent.slice(1).indexOf('-') + 2);
-      // if (separado[0] === '') {
-      //   a = parseFloat(separado[1]);
-
-      //   visor.textContent = `${a}${operador}${b}`;
-      //   return;
-      // } else {
-      //   if (b.slice(0) !== '-') {
-      //     visor.textContent = `${a}${operador}${parseFloat(b) * -1}`;
-      //   } else {
-      //     visor.textContent = `${a}${operador}${Math.abs(parseFloat(b))}`;
-      //   }
-      // }
+      a = visor.textContent.slice(0, visor.textContent.slice(1).indexOf('-') + 2);
+      if (b.slice(0) !== '-') {
+        visor.textContent = `${a}${parseFloat(b) * -1}`;
+      } else {
+        visor.textContent = `${a}${Math.abs(parseFloat(b))}`;
+      }
     } else {
       if (b.slice(0) !== '-') {
         visor.textContent = `${a}${operador}${parseFloat(b) * -1}`;
@@ -232,7 +214,17 @@ function inverter() {
   }
 }
 
+// --Função do Botão Resultado
+function resultado() {
+  if (!unicos.includes(visor.textContent[visor.textContent.length - 1])) {
+    identificarOperacao(acharOperador());
+  }
+}
+
 //EVENTOS
+botaoLimpaUm.onclick = limpaUm;
+botaoC.onclick = limpaTudo;
+
 botaoZero.onclick = () => inserirElemnetoNoVisor(botaoZero.textContent);
 botaoUm.onclick = () => inserirElemnetoNoVisor(botaoUm.textContent);
 botaoDois.onclick = () => inserirElemnetoNoVisor(botaoDois.textContent);
@@ -246,14 +238,11 @@ botaoNove.onclick = () => inserirElemnetoNoVisor(botaoNove.textContent);
 
 botaoPonto.onclick = () => inserirElemnetoNoVisor(botaoPonto.textContent);
 
-botaoLimpaUm.onclick = limpaUm;
-botaoC.onclick = limpaTudo;
-
 botaoMenos.onclick = () => inserirElemnetoNoVisor(botaoMenos.textContent);
 botaoMais.onclick = () => inserirElemnetoNoVisor(botaoMais.textContent);
 botaoMultiplicar.onclick = () => inserirElemnetoNoVisor(botaoMultiplicar.textContent);
 botaoDividir.onclick = () => inserirElemnetoNoVisor(botaoDividir.textContent);
-
-botaoResultado.onclick = resultado;
 botaoPorcentagem.onclick = porcentagem;
 botaoInverte.onclick = inverter;
+
+botaoResultado.onclick = resultado;
