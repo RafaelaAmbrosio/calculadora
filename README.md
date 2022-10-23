@@ -3,7 +3,7 @@
 ### Status: Em Andamento
 
 <div>
-  <a href="https://rafaelaambrosio.github.io/calculadora/">Visitar Site</a>
+  <a href="https://rafaelaambrosio.github.io/calculadora/">Visitar Projeto</a>
 </div>
 
 ### Tecnologias:
