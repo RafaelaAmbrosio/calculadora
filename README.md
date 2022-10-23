@@ -1,10 +1,15 @@
 # Calculadora
 
-### Status: Em Andamento
-
 <div>
   <a href="https://rafaelaambrosio.github.io/calculadora/">Visitar Projeto</a>
 </div>
+
+
+### Sobre:
+Nesse projeto criei uma calculadora do zero utilizando alguns dos ensinamentos aprendidos nas primeiras aulas do Módulo 2 do curso de DDS da  <a href="https://cubos.academy/cursos/desenvolvimento-de-software">Cubos Academy</a>.
+
+### Status: Concluído
+
 
 ### Tecnologias:
 <div style="display: inline_block">
