@@ -115,7 +115,7 @@ function inserirElemnetoNoVisor(elemento) {
   }
 }
 
-// --Funções Matemática
+// --Funções Matemáticas
 function soma() {
   let separado = visor.textContent.split('+');
   let a = parseFloat(separado[0]),

@@ -12,7 +12,7 @@ body {
   align-items: center;
 
   min-height: 100vh;
-  background-color: hsl(217, 54%, 11%);
+  background-color: hsl(216, 47%, 12%);
 }
 
 .calculadora {
@@ -26,12 +26,13 @@ body {
   width: 370px;
 
   border-radius: 20px;
-  background-color: hsl(214, 68%, 19%);
+  background-color: hsl(214, 18%, 45%);
+  box-shadow: 5px 4px #00000062;
 }
 
 .visor {
   height: 70px;
-  width: 310px;
+  width: 316px;
   border-radius: 6px;
   background-color: white;
 
@@ -42,20 +43,79 @@ body {
   font-family: sans-serif;
   font-weight: 600;
   text-align: end;
-  background-color: white;
+
+  border: 3px solid black;
+  background: linear-gradient(#fffffff6, #ffffffe5 50%);
 }
 
 .botoes button {
   height: 75px;
   width: 75px;
 
-  margin-top: 3px;
+  margin-top: 5px;
 
-  border-radius: 6px;
+  border-radius: 11px;
+  border: 2.5px solid black;
+
+  cursor: pointer;
 
   font-size: 30px;
   font-family: sans-serif;
   font-weight: 600;
-  background-color: white;
-  cursor: pointer;
+
+  background: linear-gradient(#ffffff, #d3d3d3);
+
+  color: #000000;
+}
+
+.button-limpar img {
+  height: 25px;
+  width: 25px;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  position: absolute;
+  bottom: 0;
+
+  padding-bottom: 5px;
+
+  font-family: serif;
+  color: white;
+}
+
+.contatos {
+  display: flex;
+  gap: 20px;
+}
+
+.git {
+  height: 30px;
+  width: 30px;
+
+  background-image: url('../assets/github-light.svg');
+  background-repeat: no-repeat;
+  background-size: 30px;
+}
+
+.linkedin {
+  height: 30px;
+  width: 30px;
+
+  background-image: url('../assets/linkedin-light.svg');
+  background-repeat: no-repeat;
+  background-size: 30px;
+}
+
+.twitter {
+  height: 30px;
+  width: 30px;
+
+  background-image: url('../assets/twitter-light.svg');
+  background-repeat: no-repeat;
+  background-size: 30px;
 }
