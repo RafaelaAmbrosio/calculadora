@@ -81,8 +81,8 @@ function acharOperador() {
 
 function tamanhoResultado(resultado) {
   let strResultado = `${resultado}`;
-  if (strResultado.length > 14) {
-    visor.textContent = strResultado.slice(0, 14);
+  if (strResultado.length > 12) {
+    visor.textContent = strResultado.slice(0, 12);
   } else {
     visor.textContent = strResultado;
   }
@@ -90,7 +90,7 @@ function tamanhoResultado(resultado) {
 
 // --Função do Visor
 function inserirElemnetoNoVisor(elemento) {
-  if (visor.textContent.length < 14) {
+  if (visor.textContent.length < 12) {
     if (unicos.includes(elemento) && procuraUnicos() && !unicos.includes(visor.textContent.slice(-1))) {
       identificarOperacao(acharOperador());
       visor.textContent += elemento;

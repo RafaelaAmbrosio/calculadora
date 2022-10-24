@@ -28,7 +28,7 @@ body {
   border-radius: 20px;
   border: 1px solid #000000ce;
   background-color: hsl(214, 18%, 45%);
-  box-shadow: 5px 4px #00000062;
+  box-shadow: 7px 10px 54px #000000;
 }
 
 .visor {
@@ -37,11 +37,11 @@ body {
   border-radius: 6px;
   background-color: white;
 
-  padding-top: 12px;
-  padding-right: 5px;
+  padding-top: 5px;
+  padding-right: 10px;
 
   font-size: 40px;
-  font-family: sans-serif;
+  font-family: 'Roboto Mono', monospace;
   font-weight: 600;
   text-align: end;
 
@@ -61,8 +61,8 @@ body {
   cursor: pointer;
 
   font-size: 30px;
-  font-family: sans-serif;
-  font-weight: 600;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 800;
 
   background: linear-gradient(#ffffff, #d3d3d3);
 
