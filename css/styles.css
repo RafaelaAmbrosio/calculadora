@@ -34,19 +34,18 @@ body {
 .visor {
   height: 70px;
   width: 316px;
-  border-radius: 6px;
-  background-color: white;
 
   padding-top: 5px;
   padding-right: 10px;
+
+  border-radius: 6px;
+  border: 3px solid #000000d0;
+  background: linear-gradient(#fffffff6, #ffffffe5 50%);
 
   font-size: 40px;
   font-family: 'Roboto Mono', monospace;
   font-weight: 600;
   text-align: end;
-
-  border: 3px solid #000000d0;
-  background: linear-gradient(#fffffff6, #ffffffe5 50%);
 }
 
 .botoes button {
@@ -64,14 +63,24 @@ body {
   font-family: 'Roboto Mono', monospace;
   font-weight: 800;
 
-  background: linear-gradient(#ffffff, #d3d3d3);
-
   color: #000000;
 }
 
 .button-limpar img {
   height: 25px;
   width: 25px;
+}
+
+.cor-normal {
+  background: linear-gradient(#ffffff, #d3d3d3);
+}
+
+.cor-escura {
+  background: linear-gradient(#e4e1e1, #dad6d663);
+}
+
+.cor-diferente {
+  background: linear-gradient(#cacffac7, #8e9bd659);
 }
 
 footer {
