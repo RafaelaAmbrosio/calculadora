@@ -225,7 +225,6 @@ function resultado() {
 
 // --Função KeyDown
 function identificarEvent(event) {
-  console.log(event);
   if (event.key === '*' || event.key === '/') {
     if (event.key === '*') {
       inserirElemnetoNoVisor('x');
