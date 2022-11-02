@@ -231,7 +231,7 @@ function identificarEvent(event) {
     } else {
       inserirElemnetoNoVisor('÷');
     }
-  } else if (numeros.includes(event.key) || unicos.includes(event.key)) {
+  } else if (numeros.includes(event.key) || unicos.includes(event.key) || event.key === '.') {
     inserirElemnetoNoVisor(event.key);
   } else if (event.key === 'Backspace') {
     limpaUm();
