@@ -1,3 +1,4 @@
+const body = document.querySelector('body');
 const visor = document.querySelector('.visor');
 
 //BOTÕES NUMERICOS
@@ -34,6 +35,7 @@ const botaoResultado = document.querySelector('.button-resultado');
 
 //OUTROS
 const unicos = ['+', '-', 'x', '÷'];
+const numeros = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 
 /////FUNÇÕES/////
 
@@ -221,6 +223,24 @@ function resultado() {
   }
 }
 
+// --Função KeyDown
+function identificarEvent(event) {
+  console.log(event);
+  if (event.key === '*' || event.key === '/') {
+    if (event.key === '*') {
+      inserirElemnetoNoVisor('x');
+    } else {
+      inserirElemnetoNoVisor('÷');
+    }
+  } else if (numeros.includes(event.key) || unicos.includes(event.key)) {
+    inserirElemnetoNoVisor(event.key);
+  } else if (event.key === 'Backspace') {
+    limpaUm();
+  } else if (event.key === 'Enter') {
+    resultado();
+  }
+}
+
 //EVENTOS
 botaoLimpaUm.onclick = limpaUm;
 botaoC.onclick = limpaTudo;
@@ -246,3 +266,5 @@ botaoPorcentagem.onclick = porcentagem;
 botaoInverte.onclick = inverter;
 
 botaoResultado.onclick = resultado;
+
+body.addEventListener('keydown', identificarEvent);
