@@ -29,6 +29,8 @@ body {
   border: 1px solid #000000ce;
   background-color: hsl(214, 18%, 45%);
   box-shadow: 7px 10px 54px #000000;
+
+  z-index: 1;
 }
 
 .visor {
