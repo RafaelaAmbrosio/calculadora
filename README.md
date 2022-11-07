@@ -1,7 +1,7 @@
 # Calculadora
 
 <div>
-  <a href="https://rafaelaambrosio.github.io/calculadora/" target="_blank">Visitar Projeto</a>
+  <a href="https://rafaelaambrosio.github.io/calculadora/">Visitar Projeto</a>
 </div>
 
 
